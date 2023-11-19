@@ -29,7 +29,6 @@ const UserFormComponent = ({ defaultData }) => {
   const [isSubmitEnabled, SetisSubmitEnabled] = React.useState(true);
 
   const onSubmit = async (data) => {
-    console.log("clicked : ", data);
     setIsLoading(true);
     try{
         // console.log(touchedFields)
@@ -41,10 +40,8 @@ const UserFormComponent = ({ defaultData }) => {
             return acc;
           }, {});
 
-          console.log('POST data:', postData);
           const res = await updatePrice({amount: postData});
-          console.log(res);
-          if(res.status === 200){
+          if(res?.status === 200){
             console.log("Price Updated !");
             reset({
               name: data?.name,
